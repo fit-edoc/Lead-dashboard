@@ -4,7 +4,7 @@ dotenv.config();
 
 const uri = process.env.MONGO_URI;
 console.log('URI:', uri);
-mongoose.connect(uri)
+mongoose.connect(uri as string)
   .then(() => console.log('Success'))
   .catch(err => console.error('Error:', err.message))
   .finally(() => process.exit(0));

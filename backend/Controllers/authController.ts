@@ -27,7 +27,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
       role: role && Object.values(UserRole).includes(role) ? role : UserRole.SALES_USER,
     });
 
-    const token = generateToken(user._id as string, user.role);
+    const token = generateToken(user._id.toString(), user.role);
 
     res.status(201).json({
       success: true,
@@ -62,7 +62,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       return next(new CustomError('Invalid credentials', 401));
     }
 
-    const token = generateToken(user._id as string, user.role);
+    const token = generateToken(user._id.toString(), user.role);
 
     res.status(200).json({
       success: true,

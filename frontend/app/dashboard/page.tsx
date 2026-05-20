@@ -44,12 +44,17 @@ export default function DashboardPage() {
 
   // Dark mode
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !isAuthenticated) {
       router.push("/login");
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, router, mounted]);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -95,7 +100,7 @@ export default function DashboardPage() {
     exportToCSV(leads, "leads_export.csv");
   };
 
-  if (!isAuthenticated) return null;
+  if (!mounted || !isAuthenticated) return null;
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 p-6">

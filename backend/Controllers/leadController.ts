@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
-import Lead from '../models/Lead';
-import { CustomError } from '../utils/CustomError';
+import Lead from '../models/Lead.js';
+import { CustomError } from '../utils/CustomError.js';
 
 // @desc    Create a new lead
 // @route   POST /api/leads

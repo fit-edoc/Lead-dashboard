@@ -5,9 +5,9 @@ import {
   getLead,
   updateLead,
   deleteLead,
-} from '../Controllers/leadController';
-import { protect, authorize } from '../middleware/authMiddleware';
-import { UserRole } from '../models/User';
+} from '../Controllers/leadController.js';
+import { protect, authorize } from '../middleware/authMiddleware.js';
+import { UserRole } from '../models/User.js';
 
 const router = express.Router();
 
